@@ -1,86 +1,616 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Coming Soon</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="SYMCURE — Doctor-led care you can trust. Technology-powered. Coming Soon." />
+  <title>SYMCURE — Coming Soon</title>
 
-        .container {
-            max-width: 600px;
-        }
+  <style>
+    :root{
+      --navy: #243B6B;
+      --navy-2:#162446;
+      --teal:#0E7C86;
+      --emerald:#2FA66A;
+      --ink:#0C1222;
+      --muted:#6B7385;
+      --card:#0F1A36;
+      --card-2:#111F40;
+      --line: rgba(255,255,255,.10);
+      --glass: rgba(255,255,255,.06);
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
 
-        h1 {
-            font-size: 48px;
-            margin-bottom: 10px;
-        }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: #fff;
+      background: radial-gradient(1200px 800px at 15% 20%, rgba(47,166,106,.16), transparent 55%),
+                  radial-gradient(1000px 700px at 80% 25%, rgba(14,124,134,.20), transparent 55%),
+                  radial-gradient(900px 600px at 55% 90%, rgba(36,59,107,.35), transparent 60%),
+                  linear-gradient(160deg, var(--navy-2), #070B16 65%);
+      overflow-x:hidden;
+    }
 
-        p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            opacity: 0.9;
-        }
+    a{color:inherit; text-decoration:none}
+    .container{width:min(1120px, 92vw); margin:0 auto}
 
-        .email-box {
-            display: flex;
-            justify-content: center;
-        }
+    .bg-grid{
+      position:fixed; inset:0; pointer-events:none; opacity:.35;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(700px 500px at 40% 20%, #000 40%, transparent 70%);
+      animation: gridDrift 18s linear infinite;
+    }
+    @keyframes gridDrift{
+      from{transform:translate3d(0,0,0)}
+      to{transform:translate3d(-64px,-64px,0)}
+    }
 
-        input[type="email"] {
-            padding: 12px;
-            width: 65%;
-            border: none;
-            border-radius: 5px 0 0 5px;
-            outline: none;
-        }
+    .pulse-line{
+      position:fixed; left:-10vw; right:-10vw; top:62vh;
+      height:2px; pointer-events:none;
+      background: linear-gradient(90deg, transparent, rgba(47,166,106,.0), rgba(47,166,106,.35), rgba(47,166,106,.0), transparent);
+      opacity:.35;
+      filter: blur(.2px);
+    }
+    .pulse-line::after{
+      content:"";
+      position:absolute; inset:-14px 0;
+      background:
+        radial-gradient(circle at 30% 50%, rgba(47,166,106,.25), transparent 45%),
+        radial-gradient(circle at 55% 50%, rgba(14,124,134,.18), transparent 45%),
+        radial-gradient(circle at 75% 50%, rgba(255,255,255,.10), transparent 40%);
+      animation: glowSweep 4.8s ease-in-out infinite;
+    }
+    @keyframes glowSweep{
+      0%{transform:translateX(-18%)}
+      50%{transform:translateX(18%)}
+      100%{transform:translateX(-18%)}
+    }
 
-        button {
-            padding: 12px 20px;
-            border: none;
-            background-color: #ff9800;
-            color: white;
-            font-weight: bold;
-            border-radius: 0 5px 5px 0;
-            cursor: pointer;
-        }
+    header{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(14px);
+      background: rgba(7,11,22,.55);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:800; letter-spacing:.02em;
+    }
+    .brand img{
+      width:36px; height:36px; object-fit:contain;
+      border-radius:10px;
+      background: rgba(255,255,255,.06);
+      padding:6px;
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .navlinks{display:flex; gap:18px; color:rgba(255,255,255,.82); font-weight:600; font-size:14px}
+    .navlinks a{padding:8px 10px; border-radius:10px}
+    .navlinks a:hover{background:rgba(255,255,255,.06)}
+    .navcta{display:flex; gap:10px; align-items:center}
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(47,166,106,.35);
+      background: linear-gradient(180deg, rgba(47,166,106,.18), rgba(47,166,106,.06));
+      box-shadow: 0 0 0 1px rgba(47,166,106,.12) inset;
+      font-weight:700; font-size:12px; letter-spacing:.04em;
+      text-transform:uppercase;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: var(--emerald);
+      box-shadow: 0 0 12px rgba(47,166,106,.65);
+    }
 
-        button:hover {
-            background-color: #e68900;
-        }
+    main{padding:44px 0 34px}
+    .hero{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:28px;
+      align-items:stretch;
+      margin-top:14px;
+    }
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr; gap:18px}
+      .navlinks{display:none}
+    }
 
-        footer {
-            margin-top: 40px;
-            font-size: 14px;
-            opacity: 0.7;
-        }
-    </style>
+    .panel{
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .panel::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(800px 320px at 20% 20%, rgba(47,166,106,.18), transparent 55%),
+                  radial-gradient(700px 300px at 90% 0%, rgba(14,124,134,.18), transparent 50%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .panel > *{position:relative}
+
+    .hero-left{padding:28px 28px 22px}
+    .kicker{
+      display:flex; align-items:center; gap:10px;
+      color:rgba(255,255,255,.85);
+      font-weight:700;
+      letter-spacing:.02em;
+      margin-bottom:12px;
+      flex-wrap:wrap;
+    }
+    .kicker span{
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      font-size:12px;
+    }
+    h1{
+      margin:0 0 12px;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height:1.05;
+      letter-spacing:-.02em;
+    }
+    .sub{
+      margin:0 0 18px;
+      color:rgba(255,255,255,.80);
+      font-size: 16px;
+      line-height:1.6;
+      max-width: 56ch;
+    }
+    .trustline{
+      margin: 0 0 18px;
+      color: rgba(255,255,255,.74);
+      font-weight:700;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.10);
+      font-size:13px;
+    }
+    .pill i{
+      width:10px; height:10px; border-radius:2px;
+      background: var(--emerald);
+      box-shadow: 0 0 12px rgba(47,166,106,.55);
+      display:inline-block;
+    }
+
+    /* Contact details – more visible */
+    .contact-panel{
+      margin-top: 10px;
+      border-radius: 16px;
+      border: 1px solid rgba(47,166,106,.28);
+      background: linear-gradient(180deg, rgba(47,166,106,.14), rgba(7,11,22,.35));
+      padding: 16px 16px;
+      display: grid;
+      gap: 12px;
+    }
+    .contact-title{
+      font-weight:900;
+      letter-spacing:.03em;
+      text-transform:uppercase;
+      font-size:12px;
+      color: rgba(255,255,255,.86);
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .contact-title .dot{
+      width:10px; height:10px;
+      border-radius:50%;
+      background: var(--emerald);
+      box-shadow: 0 0 14px rgba(47,166,106,.75);
+    }
+    .contact-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      padding:12px 12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 14px;
+    }
+    .contact-label{
+      color: rgba(255,255,255,.70);
+      font-weight:800;
+      font-size:13px;
+      letter-spacing:.02em;
+      text-transform:uppercase;
+    }
+    .contact-value{
+      font-weight:900;
+      font-size:14px;
+      letter-spacing:.01em;
+      border-bottom: 1px solid rgba(255,255,255,.22);
+    }
+    .contact-value:hover{border-bottom-color: rgba(255,255,255,.45)}
+    .fineprint{
+      margin:10px 0 0;
+      color: rgba(255,255,255,.58);
+      font-size: 12px;
+      line-height:1.5;
+    }
+
+    .hero-right{padding:22px}
+    .mock{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(15,26,54,.75), rgba(12,18,34,.65));
+      overflow:hidden;
+      position:relative;
+      height: 100%;
+      min-height: 320px;
+    }
+    .mock-top{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 14px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .mock-dots{display:flex; gap:8px}
+    .mock-dots span{
+      width:10px; height:10px; border-radius:50%;
+      background: rgba(255,255,255,.18);
+    }
+    .mock-title{font-weight:800; color:rgba(255,255,255,.86); font-size:13px}
+    .mock-body{
+      padding:16px 14px 14px;
+      display:grid;
+      gap:12px;
+    }
+    .floating{
+      animation: floaty 4.8s ease-in-out infinite;
+    }
+    @keyframes floaty{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-6px)}
+    }
+    .chiprow{display:flex; gap:10px; flex-wrap:wrap}
+    .chip{
+      padding:9px 10px; border-radius:999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      font-size:12px;
+      color:rgba(255,255,255,.78);
+      display:inline-flex; gap:8px; align-items:center;
+    }
+    .chip b{color:#fff}
+    .spark{
+      width:10px; height:10px; border-radius:2px;
+      background: rgba(14,124,134,.95);
+      box-shadow: 0 0 12px rgba(14,124,134,.45);
+    }
+    .chart{
+      height:160px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)),
+        radial-gradient(400px 180px at 30% 60%, rgba(47,166,106,.16), transparent 60%),
+        radial-gradient(380px 180px at 70% 20%, rgba(14,124,134,.18), transparent 60%);
+      position:relative;
+      overflow:hidden;
+    }
+    .chart svg{position:absolute; inset:0}
+    .chart .label{
+      position:absolute; left:14px; top:12px;
+      font-weight:800; font-size:12px;
+      color:rgba(255,255,255,.78);
+      letter-spacing:.03em;
+    }
+    .chart .small{
+      position:absolute; left:14px; bottom:12px;
+      color:rgba(255,255,255,.62);
+      font-size:12px;
+    }
+
+    .timeline{
+      margin:18px 0 0;
+      padding:14px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(47,166,106,.25);
+      background: linear-gradient(180deg, rgba(47,166,106,.12), rgba(7,11,22,.35));
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px; flex-wrap:wrap;
+    }
+    .timeline strong{font-size:14px}
+    .bar{
+      flex: 1 1 280px;
+      height:10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.10);
+      overflow:hidden;
+      min-width: 220px;
+    }
+    .bar > span{
+      display:block;
+      width: 42%;
+      height:100%;
+      background: linear-gradient(90deg, rgba(47,166,106,1), rgba(14,124,134,.95));
+      box-shadow: 0 0 18px rgba(47,166,106,.35);
+      animation: progressGlow 3.8s ease-in-out infinite;
+    }
+    @keyframes progressGlow{
+      0%,100%{filter:saturate(1); opacity:.95}
+      50%{filter:saturate(1.15); opacity:1}
+    }
+    .timeline em{font-style:normal; color:rgba(255,255,255,.72); font-weight:700; font-size:13px}
+
+    .section{padding:28px 0 22px}
+    .section h2{
+      margin:0 0 10px;
+      font-size: 22px;
+      letter-spacing:-.01em;
+    }
+    .section p{
+      margin:0 0 16px;
+      color:rgba(255,255,255,.74);
+      line-height:1.6;
+    }
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 980px){ .cards{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width: 520px){ .cards{grid-template-columns:1fr} }
+
+    .card{
+      padding:16px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      position:relative;
+      overflow:hidden;
+      min-height: 132px;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(47,166,106,.24);
+    }
+    .card .icon{
+      width:40px; height:40px;
+      border-radius: 14px;
+      display:grid; place-items:center;
+      background: rgba(47,166,106,.14);
+      border: 1px solid rgba(47,166,106,.25);
+      margin-bottom:10px;
+    }
+    .card .icon svg{width:22px; height:22px}
+    .card h3{margin:0 0 6px; font-size:15px}
+    .card span{color:rgba(255,255,255,.70); font-size:13px; line-height:1.5; display:block}
+
+    footer{
+      padding:18px 0 28px;
+      color: rgba(255,255,255,.55);
+      border-top:1px solid rgba(255,255,255,.08);
+      margin-top: 16px;
+    }
+    .foot{
+      display:flex; justify-content:space-between; align-items:center;
+      gap:10px; flex-wrap:wrap;
+      font-size: 12px;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Coming Soon 🚀</h1>
-        <p>We are working hard to launch something amazing. Stay tuned!</p>
+  <div class="bg-grid"></div>
+  <div class="pulse-line"></div>
 
-        <div class="email-box">
-            <input type="email" placeholder="Enter your email">
-            <button>Notify Me</button>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="brand">
+          <img src="symcure-logo.png" alt="SYMCURE logo" />
+          <div>SYMCURE</div>
         </div>
 
-        <footer>
-            © 2026 Your Company. All rights reserved.
-        </footer>
+        <nav class="navlinks" aria-label="Primary">
+          <a href="#highlights">Highlights</a>
+          <a href="#phase">Phase 1</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="navcta">
+          <div class="badge"><span class="dot"></span> Coming Soon</div>
+        </div>
+      </div>
     </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="panel hero-left">
+        <div class="kicker">
+          <span>Doctor-First Platform</span>
+          <span>HealthTech</span>
+          <span>Verified Network</span>
+        </div>
+
+        <h1>Doctor-Led Care<br/>You Can Trust.<br/>Technology-Powered.</h1>
+
+        <p class="sub">
+          SYMCURE is building a curated network of verified doctors delivering structured, secure digital healthcare—
+          designed for repeat care, not marketplace chaos.
+        </p>
+
+        <div class="trustline">
+          <div class="pill"><i></i> Verified Doctors Only</div>
+          <div class="pill"><i></i> Secure Consultations</div>
+          <div class="pill"><i></i> Structured Workflows</div>
+          <div class="pill"><i></i> Seamless Follow-Ups</div>
+        </div>
+
+        <!-- CONTACT DETAILS (high visibility) -->
+        <div class="contact-panel" id="contact">
+          <div class="contact-title"><span class="dot"></span> Contact Details</div>
+
+          <div class="contact-row">
+            <div class="contact-label">Email</div>
+            <a class="contact-value" href="mailto:symcure@hotmail.com">symcure@hotmail.com</a>
+          </div>
+
+          <div class="contact-row">
+            <div class="contact-label">Phone</div>
+            <a class="contact-value" href="tel:+919571194667">+91 95711 94667</a>
+          </div>
+        </div>
+
+        <p class="fineprint">
+          For early access and launch updates, reach out directly via email or phone.
+        </p>
+
+        <div class="timeline" id="phase">
+          <strong>Launching Soon</strong>
+          <div class="bar" aria-label="Launch progress">
+            <span></span>
+          </div>
+          <em>Phase 1: Curated Doctor Network</em>
+        </div>
+      </div>
+
+      <div class="panel hero-right">
+        <div class="mock">
+          <div class="mock-top">
+            <div class="mock-dots" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="mock-title">Clinical-Grade Digital Care (Preview)</div>
+          </div>
+
+          <div class="mock-body">
+            <div class="chiprow floating">
+              <div class="chip"><span class="spark"></span> Verified <b>Doctor Profiles</b></div>
+              <div class="chip"><span class="spark"></span> Structured <b>Care Plan</b></div>
+              <div class="chip"><span class="spark"></span> Secure <b>Payments</b></div>
+            </div>
+
+            <div class="chart">
+              <div class="label">Care Continuity Signals</div>
+              <div class="small">Protocol-driven, repeat-care focused.</div>
+              <svg viewBox="0 0 800 320" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="g" x1="0" x2="1">
+                    <stop offset="0" stop-color="rgba(47,166,106,0.9)" />
+                    <stop offset="1" stop-color="rgba(14,124,134,0.9)" />
+                  </linearGradient>
+                </defs>
+                <path d="M0,210 C90,180 150,220 220,190 C285,160 340,165 410,140 C500,105 570,175 650,145 C710,120 755,135 800,110"
+                      fill="none" stroke="url(#g)" stroke-width="6" stroke-linecap="round"/>
+                <path d="M0,260 C90,240 150,275 220,250 C285,225 340,230 410,210 C500,185 570,230 650,205 C710,185 755,195 800,180"
+                      fill="none" stroke="rgba(255,255,255,.16)" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <div class="chiprow">
+              <div class="chip"><span class="spark"></span> Digital <b>Prescription</b></div>
+              <div class="chip"><span class="spark"></span> Follow-up <b>Continuity</b></div>
+              <div class="chip"><span class="spark"></span> Audit-ready <b>Workflows</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="highlights">
+      <h2>What We’re Building</h2>
+      <p>
+        A doctor-led platform designed around clinical integrity—verified professionals, structured consultation workflows,
+        secure digital care, and seamless follow-ups.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l8 4v6c0 6-4 9-8 10-4-1-8-4-8-10V6l8-4z" stroke="white" stroke-width="1.8"/>
+              <path d="M8.5 12.2l2.2 2.2 4.8-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Verified Doctors Only</h3>
+          <span>Curated onboarding to protect quality and trust.</span>
+        </div>
+
+        <div class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M7 10V8a5 5 0 0110 0v2" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M6.5 10h11a2 2 0 012 2v7a2 2 0 01-2 2h-11a2 2 0 01-2-2v-7a2 2 0 012-2z" stroke="white" stroke-width="1.8"/>
+              <path d="M12 14v3" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Secure Digital Consultations</h3>
+          <span>Privacy-first experience with secure interactions.</span>
+        </div>
+
+        <div class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M7 3h10a2 2 0 012 2v14a2 2 0 01-2 2H7a2 2 0 01-2-2V5a2 2 0 012-2z" stroke="white" stroke-width="1.8"/>
+              <path d="M8 8h8M8 12h8M8 16h6" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Structured Clinical Workflows</h3>
+          <span>Protocol-driven care—consistent, trackable, dependable.</span>
+        </div>
+
+        <div class="card">
+          <div class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M21 12a9 9 0 11-3.2-6.9" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M21 3v6h-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M8 12h2l1-2 2 4 1-2h2" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Seamless Follow-Ups</h3>
+          <span>Continuity with the same doctor, built into the flow.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="foot">
+        <div>© <span id="year"></span> SYMCURE. All rights reserved.</div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="#" onclick="return false;">Privacy</a>
+          <a href="#" onclick="return false;">Terms</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
